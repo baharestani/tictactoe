@@ -3,10 +3,14 @@
 using TicTacToe;
 
 var board = new Board();
+var players = new[] { 'X', 'O' };
+int turn = Random.Shared.Next(2);
+
 while (true)
 {
-    Console.Write("Enter row and column between 0 to 2 separated by space:");
-    string? input = Console.ReadLine();
+    char player = players[turn];
+    DrawBoard();
+    string? input = GetInput(player);
     Console.Clear();
     
     if (string.IsNullOrEmpty(input))
@@ -14,19 +18,27 @@ while (true)
 
     try
     {
-        (byte row, byte column) = Parse(input);
-        board.MarkCell(row, column, 'X');
+        (byte row, byte column) = ParseInput(input);
+        board.MarkCell(row, column, player);
+        char? winner = new Game(board).FindWinner();
+        if (winner != null)
+        {
+            DrawBoard();
+            Console.WriteLine($"Player {winner} wins!");
+            break;
+        }
+        turn = 1 - turn;
     }
     catch (Exception e)
     {
         WriteError(e.Message);
     }
-    DrawBoard();
+
 }
 
 return;
 
-(byte row,byte column) Parse(string input)
+(byte row,byte column) ParseInput(string input)
 {
     string[] parts = input.Trim().Split(' ');
     if (parts.Length != 2)
@@ -58,4 +70,11 @@ void WriteError(string message)
     Console.ForegroundColor = ConsoleColor.Red;
     Console.WriteLine(message);
     Console.ResetColor();
+}
+
+string? GetInput(char c)
+{
+    Console.WriteLine( c + "'s turn");
+    Console.Write("Enter row and column between 0 to 2 separated by space: ");
+    return Console.ReadLine();
 }
