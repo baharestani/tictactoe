@@ -2,7 +2,7 @@ namespace TicTacToe;
 
 public class Board
 {
-    private readonly char[,] _cells = new char[3, 3];
+    public readonly char[,] Cells = new char[3, 3];
     public void MarkCell(byte row, byte column, char player)
     {
         if (row >= 3 || column >= 3)
@@ -11,11 +11,11 @@ public class Board
         if (IsMarked(row, column))
             throw new InvalidOperationException("Cell is already marked");
         
-        _cells[row, column] = player;
+        Cells[row, column] = player;
     }
 
     public bool IsMarked(int row, int column)
     {
-        return _cells[row, column] != '\0';
+        return Cells[row, column] != '\0';
     }
 }
