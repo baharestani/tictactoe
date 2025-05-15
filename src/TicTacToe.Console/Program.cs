@@ -11,10 +11,18 @@ while (true)
     char player = players[turn];
     DrawBoard();
     string? input = GetInput(player);
-    Console.Clear();
-    
+
     if (string.IsNullOrEmpty(input))
         break;
+
+    if (board.IsCompleted())
+    {
+        DrawBoard();
+        Console.WriteLine("Game is completed");
+        break;
+    }
+
+    Console.Clear();
 
     try
     {
