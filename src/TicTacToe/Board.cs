@@ -1,8 +1,10 @@
 namespace TicTacToe;
 
+using System.Linq;
 public class Board
 {
-    public readonly char[,] Cells = new char[3, 3];
+    public char[,] Cells { get; init; } = new char[3, 3];
+
     public void MarkCell(byte row, byte column, char player)
     {
         if (row >= 3 || column >= 3)
@@ -19,16 +21,8 @@ public class Board
         return Cells[row, column] != '\0';
     }
 
-    public bool IsCompleted()
+    public bool AllMarked()
     {
-        for (int i = 0; i < 3; i++)
-        {
-            for (int j = 0; j < 3; j++)
-            {
-                if (Cells[i, j] == '\0')
-                    return false;
-            }
-        }
-        return true;
+        return Cells.Cast<char>().All(c => c != '\0');
     }
 }

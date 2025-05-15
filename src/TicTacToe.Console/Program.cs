@@ -3,38 +3,33 @@
 using TicTacToe;
 
 var board = new Board();
+var  game = new Game(board);
 var players = new[] { 'X', 'O' };
 int turn = Random.Shared.Next(2);
 
 while (true)
 {
-    char player = players[turn];
-    DrawBoard();
-    string? input = GetInput(player);
-
-    if (string.IsNullOrEmpty(input))
-        break;
-
-    if (board.IsCompleted())
-    {
-        DrawBoard();
-        Console.WriteLine("Game is completed");
-        break;
-    }
-
-    Console.Clear();
-
     try
     {
+        char player = players[turn];
+        DrawBoard();
+    
+        string? input = GetInput(player);
+
+        if (string.IsNullOrEmpty(input))
+            break;
+
+        Console.Clear();
         (byte row, byte column) = ParseInput(input);
         board.MarkCell(row, column, player);
-        char? winner = new Game(board).FindWinner();
-        if (winner != null)
+        if (game.IsOver(out char? winner))
         {
             DrawBoard();
-            Console.WriteLine($"Player {winner} wins!");
+
+            Console.WriteLine(winner != null ? $"Player {winner} wins!" : "Game is over");
             break;
         }
+        
         turn = 1 - turn;
     }
     catch (Exception e)

@@ -27,4 +27,11 @@ public class Game(Board board)
 
         return null; // No winner
     }
+
+    public bool IsOver(out char? winner)
+    {
+        winner = FindWinner();
+        // Game is over if there is a winner or all cells are marked
+        return winner != null || board.AllMarked();
+    }
 }
