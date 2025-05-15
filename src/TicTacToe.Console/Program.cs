@@ -1,6 +1,4 @@
-﻿// See https://aka.ms/new-console-template for more information
-
-using TicTacToe;
+﻿using TicTacToe;
 
 var board = new Board();
 var  game = new Game(board);
@@ -13,8 +11,9 @@ while (true)
     {
         char player = players[turn];
         DrawBoard();
-    
-        string? input = GetInput(player);
+        Console.WriteLine($"{player}'s turn");
+
+        string? input = GetInput();
 
         if (string.IsNullOrEmpty(input))
             break;
@@ -75,9 +74,8 @@ void WriteError(string message)
     Console.ResetColor();
 }
 
-string? GetInput(char c)
+string? GetInput()
 {
-    Console.WriteLine( c + "'s turn");
     Console.Write("Enter row and column between 0 to 2 separated by space: ");
     return Console.ReadLine();
 }
