@@ -5,6 +5,9 @@ var  game = new Game(board);
 var players = new[] { 'X', 'O' };
 int turn = Random.Shared.Next(2);
 
+Console.Clear();
+Console.WriteLine("Welcome to Tic Tac Toe!");
+
 while (true)
 {
     try
@@ -51,15 +54,17 @@ return;
 }
 
 void DrawBoard(){
-    const string hLine = "─────";
+    const int vScale = 2;
+    var hLine = new string('─', 2 * vScale + 1);
+    var padding = new string(' ', vScale );
     Console.WriteLine($"┌{hLine}┬{hLine}┬{hLine}┐");
-    for (int i = 0; i < 3; i++)
+    for (var i = 0; i < 3; i++)
     {
-        Console.Write("│  ");
-        for (int j = 0; j < 3; j++)
+        Console.Write($"│{padding}");
+        for (var j = 0; j < 3; j++)
         {
             Console.Write(board.Cells[i, j] == '\0' ? ' ' : board.Cells[i, j]);
-            Console.Write("  │  ");
+            Console.Write($"{padding}│{padding}");
         }
 
         Console.WriteLine();
