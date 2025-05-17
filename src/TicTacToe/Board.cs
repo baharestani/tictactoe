@@ -25,4 +25,27 @@ public class Board
     {
         return Cells.Cast<char>().All(c => c != '\0');
     }
+
+    public bool IsEmpty()
+    {
+        return Cells.Cast<char>().All(c => c == '\0');
+    }
+
+    public char[][] Rows
+    {
+        get
+        {
+            var rows = new char[3][];
+            for (var i = 0; i < 3; i++)
+            {
+                rows[i] = new char[3];
+                for (var j = 0; j < 3; j++)
+                {
+                    rows[i][j] = Cells[i, j];
+                }
+            }
+
+            return rows;
+        }
+    }
 }
