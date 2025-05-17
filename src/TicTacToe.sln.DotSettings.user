@@ -1,9 +1,7 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/CodeInspection/ExcludedFiles/FilesAndFoldersToSkip2/=7020124F_002D9FFC_002D4AC3_002D8F3D_002DAAB8E0240759_002Ff_003ACast_002Ecs_002Fl_003A_002E_002E_003F_002E_002E_003F_002E_002E_003F_002E_002E_003FLibrary_003FApplication_0020Support_003FJetBrains_003FRider2025_002E1_003Fresharper_002Dhost_003FSourcesCache_003F42972428d3cc80521d701ab42c9915e893639dfc930986782ab7be234b9e5_003FCast_002Ecs/@EntryIndexedValue">ForceIncluded</s:String>
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=1365dad4_002Dc3ac_002D4208_002Daad8_002D3cdcab416260/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="BoardTests" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
-  &lt;TestAncestor&gt;
-    &lt;TestId&gt;xUnit::B078871B-06FF-4FA5-8302-415F560F64ED::net9.0::TicTacToe.UnitTests.BoardTests&lt;/TestId&gt;
-    &lt;TestId&gt;xUnit::B078871B-06FF-4FA5-8302-415F560F64ED::net9.0::TicTacToe.UnitTests.GameTests.FindWinerWhenAWinnerReturnsTheWinner&lt;/TestId&gt;
-  &lt;/TestAncestor&gt;
+  &lt;Project Location="/Users/daniel/dev/personal/tictactoe/src/TicTacToe.UnitTests" Presentation="&amp;lt;TicTacToe.UnitTests&amp;gt;" /&gt;
 &lt;/SessionState&gt;</s:String>
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=c07bdfe5_002D7f5e_002D4f14_002Da8cc_002D456f13e3d714/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="IsMarkedWhenMarkedReturnsTrue" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
   &lt;TestAncestor&gt;

@@ -1,9 +1,15 @@
 namespace TicTacToe;
 
 using System.Linq;
+
 public class Board
 {
-    public char[,] Cells { get; init; } = new char[3, 3];
+    public Cell[,] Cells { get; init; } = new Cell[,]
+    {
+        { '\0', '\0', '\0' },
+        { '\0', '\0', '\0' },
+        { '\0', '\0', '\0' }
+    };
 
     public void MarkCell(byte row, byte column, char player)
     {
@@ -23,22 +29,22 @@ public class Board
 
     public bool AllMarked()
     {
-        return Cells.Cast<char>().All(c => c != '\0');
+        return Cells.Cast<Cell>().All(c => c.IsMarked);
     }
 
     public bool IsEmpty()
     {
-        return Cells.Cast<char>().All(c => c == '\0');
+        return Cells.Cast<Cell>().All(c => !c.IsMarked);
     }
 
-    public char[][] Rows
+    public Cell[][] Rows
     {
         get
         {
-            var rows = new char[3][];
+            var rows = new Cell[3][];
             for (var i = 0; i < 3; i++)
             {
-                rows[i] = new char[3];
+                rows[i] = new Cell[3];
                 for (var j = 0; j < 3; j++)
                 {
                     rows[i][j] = Cells[i, j];

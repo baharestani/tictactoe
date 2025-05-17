@@ -7,7 +7,7 @@ public class GameTests
     {
         var board = new Board
         {
-            Cells = new[,]
+            Cells = new Cell[,]
             {
                 { 'X', 'X', 'X' },
                 { '\0', '\0', '\0' },
@@ -26,7 +26,7 @@ public class GameTests
     {
         var board = new Board
         {
-            Cells = new[,]
+            Cells = new Cell[,]
             {
                 { 'O', '\0', '\0' },
                 { 'O', '\0', '\0' },
@@ -45,7 +45,7 @@ public class GameTests
     {
         var board = new Board
         {
-            Cells = new[,]
+            Cells = new Cell[,]
             {
                 { 'X', '\0', '\0' },
                 { '\0', 'X', '\0' },
@@ -64,7 +64,7 @@ public class GameTests
     {
         var board = new Board
         {
-            Cells = new[,]
+            Cells = new Cell[,]
             {
                 { 'X', 'O', 'X' },
                 { 'O', 'X', 'O' },
@@ -83,7 +83,7 @@ public class GameTests
     {
         var board = new Board
         {
-            Cells = new[,]
+            Cells = new Cell[,]
             {
                 { 'X', 'X', 'X' },
                 { '\0', '\0', '\0' },
@@ -103,7 +103,7 @@ public class GameTests
     {
         var board = new Board
         {
-            Cells = new[,]
+            Cells = new Cell[,]
             {
                 { 'X', 'O', 'X' },
                 { 'O', 'X', 'O' },
@@ -123,7 +123,7 @@ public class GameTests
     {
         var board = new Board
         {
-            Cells = new[,]
+            Cells = new Cell[,]
             {
                 { 'X', '\0', 'O' },
                 { '\0', 'X', '\0' },
@@ -132,7 +132,7 @@ public class GameTests
         };
         var game = new Game(board);
 
-        var isOver = game.IsOver(out var winner);
+        bool isOver = game.IsOver(out char? winner);
 
         Assert.False(isOver);
         Assert.Null(winner);
