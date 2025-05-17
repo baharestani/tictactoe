@@ -123,7 +123,7 @@ public class BoardTests
             }
         };
         Cell[][] rows = board.Rows;
-        rows[0][0].Value = 'x';
+        rows[0][0].Mark('x'); 
         Assert.Equal('x', board.Cells[0, 0].Value);
     }
     

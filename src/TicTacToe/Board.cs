@@ -15,11 +15,8 @@ public class Board
     {
         if (row >= 3 || column >= 3)
             throw new ArgumentOutOfRangeException();
-        
-        if (IsMarked(row, column))
-            throw new InvalidOperationException("Cell is already marked");
-        
-        Cells[row, column] = player;
+
+        Cells[row, column].Mark(player); 
     }
 
     public bool IsMarked(int row, int column)

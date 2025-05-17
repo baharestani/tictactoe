@@ -19,7 +19,7 @@ public class Cell
         return Value.GetHashCode();
     }
 
-    public char Value { get; set; }
+    public char Value { get; private set; } = '\0';
 
     public bool IsMarked => Value != '\0';
 
@@ -38,4 +38,13 @@ public class Cell
     {
         return !(left == right);
     }
+
+    public void Mark(char symbol)
+    {
+        if (IsMarked)
+            throw new InvalidOperationException("Cell is already marked");
+
+        Value = symbol;
+    }
+
 }
