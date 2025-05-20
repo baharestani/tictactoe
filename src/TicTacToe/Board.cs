@@ -13,15 +13,12 @@ public class Board
 
     public void MarkCell(byte row, byte column, char player)
     {
-        if (row >= 3 || column >= 3)
-            throw new ArgumentOutOfRangeException();
-
         Cells[row, column].Mark(player); 
     }
 
     public bool IsMarked(int row, int column)
     {
-        return Cells[row, column] != '\0';
+        return Cells[row, column].Value != '\0';
     }
 
     public bool AllMarked()
@@ -31,17 +28,16 @@ public class Board
 
     public bool IsEmpty()
     {
-        return Cells.Cast<Cell>().All(c => !c.IsMarked);
+        return Cells.Cast<Cell>().All(c => c.IsClear);
     }
 
-    public Cell[][] Rows
+    public Row[] HRows
     {
         get
         {
-            var rows = new Cell[3][];
+            var rows = new Row[3];
             for (var i = 0; i < 3; i++)
             {
-                rows[i] = new Cell[3];
                 for (var j = 0; j < 3; j++)
                 {
                     rows[i][j] = Cells[i, j];
@@ -51,4 +47,42 @@ public class Board
             return rows;
         }
     }
+
+    public Row[] VRows
+    {
+        get
+        {
+            var rows = new Row[3];
+            for (var i = 0; i < 3; i++)
+            {
+                for (var j = 0; j < 3; j++)
+                {
+                    rows[i][j] = Cells[j, i];
+                }
+            }
+
+            return rows;
+        }
+    }
+
+    public Row[] DRows
+    {
+        get
+        {
+            var rows = new Row[2];
+            for (var i = 0; i < 3; i++)
+            {
+                rows[0][i] = Cells[i, i];
+                rows[1][i] = Cells[i, 2 - i];
+            }
+
+            return rows;
+        }
+    }
+
+    public Row[] AllRows =>
+        HRows
+            .Concat(VRows)
+            .Concat(DRows)
+            .ToArray();
 }
