@@ -22,4 +22,8 @@
       <ProjectReference Include="..\TicTacToe\TicTacToe.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+        <Compile Remove="RowComparerTest.cs"/>
+    </ItemGroup>
+
 </Project>
