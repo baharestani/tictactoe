@@ -4,7 +4,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicTacToe.UnitTests", "TicT
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicTacToe", "TicTacToe\TicTacToe.csproj", "{6C0209F8-D8D5-45F8-AE1A-3170D5BA1430}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicTacToe.Console", "TicTacToe.Console\TicTacToe.Console.csproj", "{48DA794A-4EFA-4E83-B717-B5C1A1FA5E42}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicTacToe.Cli", "TicTacToe.Cli\TicTacToe.Cli.csproj", "{48DA794A-4EFA-4E83-B717-B5C1A1FA5E42}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

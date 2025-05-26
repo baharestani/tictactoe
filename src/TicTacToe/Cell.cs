@@ -1,50 +1,24 @@
 namespace TicTacToe;
 
-public class Cell
+public class Cell(char value = Cell.DefaultValue)
 {
-    protected bool Equals(Cell other)
-    {
-        return Value == other.Value;
-    }
+    private const char DefaultValue = '\0';
+    public char Value { get; private set; } = value;
 
-    public override bool Equals(object? obj)
-    {
-        if (obj is null) return false;
-        if (ReferenceEquals(this, obj)) return true;
-        return obj.GetType() == GetType() && Equals((Cell)obj);
-    }
-
-    public override int GetHashCode()
-    {
-        return Value.GetHashCode();
-    }
-
-    public char Value { get; private set; } = '\0';
-
-    public bool IsMarked => Value != '\0';
+    public bool IsMarked => Value != DefaultValue;
+    public bool IsClear => Value == DefaultValue;
 
     public static implicit operator char(Cell cell) => cell.Value;
 
-    public static implicit operator Cell(char value) => new()
-        { Value = value };
+    public static implicit operator Cell(char value) => new(value);
 
-
-    public static bool operator ==(Cell left, Cell right)
-    {
-        return left.Value.Equals(right);
-    }
-
-    public static bool operator !=(Cell left, Cell right)
-    {
-        return !(left == right);
-    }
-
-    public void Mark(char symbol)
+    public Cell Mark(char symbol)
     {
         if (IsMarked)
             throw new InvalidOperationException("Cell is already marked");
 
         Value = symbol;
+        return this;
     }
 
 }

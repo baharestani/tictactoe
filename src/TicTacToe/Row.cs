@@ -6,7 +6,7 @@ using System.Runtime.CompilerServices;
 namespace TicTacToe;
 
 [InlineArray(3)]
-public struct Row() : IEnumerable<Cell>
+public struct Row : IEnumerable<Cell>
 {
     private Cell _element0;
 
