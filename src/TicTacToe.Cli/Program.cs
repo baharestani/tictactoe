@@ -5,13 +5,21 @@ var board = new Board();
 var  game = new Game(board);
 var lastError = string.Empty;
 Cell? lastMarkedCell = null;
-IPlayer[] players =
-[
-    new CliPlayer("Mona", 'X'),
-    // new CliPlayer("Dani", 'O'),
-    new BotPlayer("Bot", 'O')
-];
-int turn = Random.Shared.Next(2);
+var symbols = new[] { 'X', 'O' };
+var players = new IPlayer[2];
+Console.WriteLine("Welcome to Tic Tac Toe!");
+int numberOfPlayers = GetNumberOfPlayers();
+int turn = Random.Shared.Next(numberOfPlayers);
+
+for (var i = 0; i < numberOfPlayers; i++)
+{
+    players[i] = GetHumanPlayer(i);
+}
+
+if (numberOfPlayers == 1)
+{
+    players[1] = new BotPlayer("Computer", symbols[1]);
+}
 
 while (true)
 {
@@ -87,4 +95,31 @@ void WriteError(string message)
     Console.ForegroundColor = ConsoleColor.Red;
     Console.WriteLine(message);
     Console.ResetColor();
+}
+
+int GetNumberOfPlayers()
+{
+    while (true)
+    {
+        Console.Write("Enter number of players (1 or 2): ");
+        string? input = Console.ReadLine();
+        if (int.TryParse(input, out int number) && number is 1 or 2)
+        {
+            return number;
+        }
+
+        Console.WriteLine("Invalid input. Please enter 1 or 2.");
+    }
+}
+
+CliPlayer GetHumanPlayer(int index)
+{
+    Console.Write($"Enter name for player {index + 1}: ");
+    string? name = Console.ReadLine();
+    if (string.IsNullOrEmpty(name))
+    {
+        name = $"Player{index + 1}";
+    }
+
+    return new CliPlayer(name, symbols[index]);
 }
